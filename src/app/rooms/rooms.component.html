@@ -1,0 +1,9 @@
+<h1>Welcome to {{hotelName}}</h1>
+
+<div class="table" *ngIf="rooms.availableRooms > 0">
+  <app-rooms-list [rooms]="roomList"
+  (selectedRoom)="selectRoom($event)">
+
+  </app-rooms-list>
+
+</div>
