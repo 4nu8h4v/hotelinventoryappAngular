@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { RoomsList, Rooms } from './rooms';
+import {NgForm} from '@angular/forms';
+
 
 @Component({
   selector: 'app-rooms',
@@ -9,6 +12,14 @@ import { RoomsList, Rooms } from './rooms';
 export class RoomsComponent implements OnInit {
 
   hotelName = "Hilton Hotel"
+
+  public roomId!: number 
+  public roomType!: string 
+  public price!: number
+  public amenities!: string
+  public checkInTime!: Date
+
+ 
 
   rooms: Rooms = {
 
@@ -48,7 +59,7 @@ export class RoomsComponent implements OnInit {
 
   ]
 
-  constructor() { }
+  constructor(config: NgbModalConfig, private modalService: NgbModal ) { }
 
   ngOnInit(): void {
   }
@@ -56,6 +67,33 @@ export class RoomsComponent implements OnInit {
   selectRoom(room: RoomsList){
     console.log(room)
 
+  }
+
+  saveDetails(){
+    const room: RoomsList = {
+      roomNumber: this.roomId,
+      roomtype: this.roomType,
+      amenities: this.amenities,
+      price: this.price,
+      checkInTime: new Date(this.checkInTime),
+    
+
+    }
+
+    this.roomList.push(room);
+    this.modalService.dismissAll();
+
+
+   
+  }
+  
+  
+  open(content: any) {
+    this.modalService.open(content);
+  }
+
+  addRooms(){
+    
   }
 
 }

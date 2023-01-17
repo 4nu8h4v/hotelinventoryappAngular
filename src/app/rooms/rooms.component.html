@@ -6,4 +6,99 @@
 
   </app-rooms-list>
 
+  <button class="btn btn-primary"
+(click)="open(content)">
+Add Rooms
+</button>
+
+
+
+<ng-template #content let-modal>
+<div class="modal-header" data-backdrop="false" >
+	<h4 class="modal-title"
+		id="modal-basic-title">
+		Enter Room Details
+	</h4>
+	<button type="button" class="close"
+			aria-label="Close" (click)=
+			"modal.dismiss('Cross click')">
+
+		<span aria-hidden="false">
+			×
+		</span>
+	</button>
 </div>
+<div class="modal-body">
+	<form>
+		<div class="form-group">
+			<label for="">
+				RoomId
+			</label>
+			<div class="input-group">
+				<input id="roomId"
+					class="form-control"
+					[(ngModel)]="roomId"
+					name="roomId"
+					>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="">
+				Room Type
+			</label>
+			<div class="input-group">
+			<input id="roomType"
+			[(ngModel)]="roomType"
+			name="roomType">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="">
+				Room Price
+			</label>
+			<div class="input-group">
+			<input id="price"
+			[(ngModel)]="price"
+			name="price">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="">
+				Amenities
+			</label>
+			<div class="input-group">
+			<input id="roomType"
+			[(ngModel)]="amenities"
+			name="roomType">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="">
+				checkInTime
+			</label>
+			<div class="input-group">
+			<input id="roomType"
+			[(ngModel)]="checkInTime"
+			name="roomType">
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button"
+	class="btn btn-outline-dark" (click)="saveDetails()">
+		Save Details
+	</button>
+	<!-- <button type="button"
+		class="btn btn-outline-dark"
+		(click)="modal.close('Save click')">
+		Save
+	</button> -->
+</div>
+
+</ng-template>
+ </div>
+
+ 
+
+  

@@ -1,6 +1,7 @@
 import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import {NgbModal, ModalDismissReasons, NgbModalConfig} 
+      from '@ng-bootstrap/ng-bootstrap';
 import { Rooms, RoomsList } from '../rooms';
 
 @Component({
@@ -10,10 +11,22 @@ import { Rooms, RoomsList } from '../rooms';
 })
 export class RoomsListComponent implements OnInit {
 
+    
+
+  
+
+  addButton = false;
+
+ 
   @Input() rooms: RoomsList[]= [] 
   @Output() selectedRoom = new EventEmitter<RoomsList>();
 
-  constructor() { }
+    
+  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+		// customize default values of modals used by this component tree
+		config.backdrop = 'static';
+		config.keyboard = false;
+	}
 
   ngOnInit(): void {
   }
@@ -23,4 +36,22 @@ export class RoomsListComponent implements OnInit {
 
   }
 
+
+  addRooms(){
+    this.addButton = true;
+    
+
+
+  }
+  
+  closeResult = '';
+  
+  
+
+  
+  open(content: any) {
+    this.modalService.open(content);
+  }
 }
+
+
